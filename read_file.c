@@ -16,8 +16,8 @@ void read_file(char *filename, stack_t **stack)
 	size_t len = 0;
 	int line_count = 0;
 	ssize_t nread;
+	instruct_func func;
 	FILE *file = fopen(filename, "r");
-	instruct_func func = get_op_func(line);
 
 	if (file == NULL)
 	{
@@ -32,11 +32,11 @@ void read_file(char *filename, stack_t **stack)
 		if (line[0] == 0 || line[0] == '#')
 			continue;
 
+		func = get_op_func(line);
+
 		if (func == NULL)
 		{
-			fprintf(stderr, "Unknown instrucion %d: %s\n", line_count, line);
-			free(line);
-			fclose(file);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, line);
 			exit(EXIT_FAILURE);
 		}
 		func(stack, line_count);
@@ -44,7 +44,6 @@ void read_file(char *filename, stack_t **stack)
 	free(line);
 	fclose(file);
 }
-
 /**
  * get_op_func -  checks opcode and returns the correct function
  * @str: the opcode
@@ -74,9 +73,11 @@ instruct_func get_op_func(char *str)
 	};
 
 	i = 0;
-	while (instruct[i].f != NULL && strcmp(instruct[i].opcode, str) != 0)
+	while (instruct[i].opcode != NULL)
 	{
+		if (strcmp(instruct[i].opcode, str) == 0)
+			return (instruct[i].f);
 		i++;
 	}
-	return (instruct[i].f);
+	return (NULL);
 }
