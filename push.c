@@ -4,16 +4,16 @@
 #include "monty.h"
 
 /**
- * push-  pushes an element to the stack
+ * _push-  pushes an element to the stack
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
- * @value_str: integer value to be pushed onto the stack
  */
-void push(stack_t **stack, unsigned int line_number, char *value_str)
+void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top;
 	int value = 0;
 	int i;
+	char value_str[100];
 
 	for (i = 0; value_str[i] != 0; i++)
 	{
@@ -58,55 +58,6 @@ int _isdigit(int c)
 	return (0);
 	}
 }
-
-/**
- * read_file- reads a bytecode file and runs commands
- * @filename: pathname to file
- * @stack: pointer to the top of the stack
- */
-void read_file(const char *filename, stack_t **stack)
-{
-	FILE *file = fopen(filename, "r");
-	char line[256];
-	char value_str[100];
-	int opcode;
-	unsigned int line_number = 0;
-
-	if (file == NULL)
-	{
-		fprintf(stderr, "Error opening file: %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
-	while (fgets(line, sizeof(line), file))
-	{
-		line_number++;
-		if (sscanf(line, "%d %s", &opcode, value_str) == 2)
-		{
-			switch (opcode)
-			{
-				case 1:
-					push(stack, line_number, value_str);
-					break;
-				case 2:
-					pall(stack, line_number);
-					break;
-				case 3:
-					pop(stack, line_number);
-					break;
-				case 4:
-					pint(stack, line_number);
-					break;
-				case 5:
-					fclose(file);
-					exit(EXIT_SUCCESS);
-				default:
-					printf("\nInvalid choice!!\n");
-			}
-		}
-	}
-	fclose(file);
-}
-
 /**
  * free_dlistint - free a list
  * @head: pointer to first node
