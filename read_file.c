@@ -132,7 +132,7 @@ char *_parse_line(char *line, stack_t **stack, unsigned int line_number)
 	if (strcmp(op_code, push) == 0)
 	{
 		argv = strtok(NULL, "\n ");
-		if (is_number(argv) == 1 && argv != NULL)
+		if (argv != NULL && is_number(argv) == 1)
 		{
 			var_global.push_argv = atoi(argv);
 		}
