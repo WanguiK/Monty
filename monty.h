@@ -2,8 +2,7 @@
 #define MONTY_H
 
 #include <stdio.h>
-
-extern int push_argv;
+#include <stdlib.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,6 +42,7 @@ typedef struct global_variable
 } global_var;
 
 extern global_var var_global;
+extern int push_argv;
 
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
