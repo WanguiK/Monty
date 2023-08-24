@@ -18,6 +18,7 @@ void read_file(char *filename, stack_t **stack)
 	int line_count = 0;
 	ssize_t nread;
 	instruct_func func;
+	int j;
 
 	var_global.file = fopen(filename, "r");
 
@@ -30,10 +31,11 @@ void read_file(char *filename, stack_t **stack)
 	while ((nread = getline(&var_global.buffer, &len, var_global.file)) != -1)
 	{
 		line = _parse_line(var_global.buffer, stack, line_count);
-		line[strcspn(line, "\n")] = 0;
 		if (line[0] == 0 || line[0] == '#')
+		{
+			line_count++;
 			continue;
-
+		}
 		func = get_op_func(line);
 
 		if (func == NULL)
@@ -45,7 +47,9 @@ void read_file(char *filename, stack_t **stack)
 		line_count++;
 	}
 	free(var_global.buffer);
-	fclose(var_global.file);
+	j = fclose(var_global.file);
+	if (j == -1)
+		exit (-1);
 }
 /**
  * get_op_func -  checks opcode and returns the correct function
