@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-global_var var_global = {NULL, 0, NULL};
+global_var var_global;
 
 /**
  * main - driver function for monty program
