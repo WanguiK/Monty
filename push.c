@@ -11,7 +11,6 @@
 void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *top;
-	int value = 0;
 
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
@@ -19,7 +18,7 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	top->n = value;
+	top->n = var_global.push_argv;
 	top->next = *stack;
 	top->prev = NULL;
 
