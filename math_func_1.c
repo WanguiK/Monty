@@ -10,7 +10,6 @@
 void _add(stack_t **stack, unsigned int line_number)
 {
 	int sum =0;
-	int i = 0;
 	stack_t *temp;
 
 	temp = *stack;
@@ -24,10 +23,9 @@ void _add(stack_t **stack, unsigned int line_number)
 	while (temp)
 	{
 		temp = temp->next;
-		i++;
 	}
 
-	if (stack == NULL || (*stack)->next == NULL || i <= 1)
+	if (stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -46,24 +44,8 @@ void _add(stack_t **stack, unsigned int line_number)
 void _sub(stack_t **stack, unsigned int line_number)
 {
 	int sub = 0;
-	int i = 0;
-	stack_t *temp;
 
-	temp = *stack;
-
-	if (temp == NULL)
-	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
-	while (temp)
-	{
-		temp = temp->next;
-		i++;
-	}
-
-	if (stack == NULL || (*stack)->next == NULL || i <= 1)
+	if (stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -106,7 +88,7 @@ void _mod(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
