@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+void file_error(char *argv);
+void error_usage(void);
+int status = 0;
 global_var var_global;
 
 /**
