@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+global_var var_global = {NULL, 0, NULL};
+
 /**
  * main - driver function for monty program
  * @argc: argument count
