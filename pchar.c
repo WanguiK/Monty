@@ -45,21 +45,19 @@ void _pstr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
  */
 void _rotl(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
-	stack_t *last;
+	stack_t *last = *stack;
+	int aux = 0;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
-	last = *stack;
 
-	while (last->next != NULL)
+	aux = last->n;
+	while (last->next)
 	{
 		last = last->next;
+		last->prev->n = last->n;
 	}
-	last->next = *stack;
-	(*stack)->prev = last;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	last->next->next = NULL;
+	last->n = aux;
 }
 
 /**
