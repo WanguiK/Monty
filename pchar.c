@@ -27,9 +27,10 @@ void _pchar(stack_t **stack, unsigned int line_number)
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _pstr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void _pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *cur = *stack;
+	(void)line_number;
 
 	while (cur != NULL && cur->n != 0 && cur->n >= 0 && cur->n <= 127)
 	{
@@ -43,10 +44,11 @@ void _pstr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _rotl(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void _rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *last = *stack;
 	int aux = 0;
+	(void)line_number;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
