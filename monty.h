@@ -67,5 +67,6 @@ void rotr(stack_t **stack, unsigned int line_number);
 int is_number(char *str);
 void dobfree(stack_t **stack);
 void dobfree2(stack_t **stack);
+char *parse_line(char *line, stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

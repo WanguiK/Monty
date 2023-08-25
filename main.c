@@ -39,6 +39,7 @@ int main(int argc, char **argv)
  */
 void read_file(char *filename, stack_t **stack)
 {
+	char *line;
 	size_t len = 0;
 	int line_count = 0;
 	ssize_t nread;
@@ -55,16 +56,17 @@ void read_file(char *filename, stack_t **stack)
 
 	while ((nread = getline(&var_global.buffer, &len, var_global.file)) != -1)
 	{
-		if (var_global.buffer[0] == 0 || var_global.buffer[0] == '#')
+		line = parse_line(var_global.buffer, stack, line_count);
+		if (line[0] == 0 || line[0] == '#')
 		{
 			line_count++;
 			continue;
 		}
-		func = get_op_func(var_global.buffer);
+		func = get_op_func(line);
 
 		if (func == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, var_global.buffer);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, line);
 			exit(EXIT_FAILURE);
 		}
 		func(stack, line_count);
