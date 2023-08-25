@@ -49,7 +49,7 @@ void read_file(char *filename, stack_t **stack)
 	free(var_global.buffer);
 	j = fclose(var_global.file);
 	if (j == -1)
-		exit (-1);
+		exit(-1);
 }
 /**
  * get_op_func -  checks opcode and returns the correct function

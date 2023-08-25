@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern int push_arg;
+extern int push_argv;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -55,7 +55,6 @@ void _nop(__attribute__ ((unused))stack_t **stack,
 		__attribute__ ((unused)) unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);
 void read_file(char *filename, stack_t **stack);
-int _isdigit(int c);
 void free_dlistint(stack_t *head);
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func get_op_func(char *str);
