@@ -3,11 +3,11 @@
 #include "monty.h"
 
 /**
- * _pall- prints all the values on the stack
+ * pall- prints all the values on the stack
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *all;
 

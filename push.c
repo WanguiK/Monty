@@ -4,11 +4,11 @@
 #include "monty.h"
 
 /**
- * _push-  pushes an element to the stack
+ * push-  pushes an element to the stack
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top;
 

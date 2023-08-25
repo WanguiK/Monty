@@ -3,11 +3,11 @@
 #include "monty.h"
 
 /**
- * _pchar - prints the char at the top of the stack
+ * pchar - prints the char at the top of the stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _pchar(stack_t **stack, unsigned int line_number)
+void pchar(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
@@ -23,11 +23,11 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	putchar('\n');
 }
 /**
- * _pstr - prints the string starting at the top of the stack
+ * pstr - prints the string starting at the top of the stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _pstr(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *cur = *stack;
 	(void)line_number;
@@ -40,11 +40,11 @@ void _pstr(stack_t **stack, unsigned int line_number)
 	putchar('\n');
 }
 /**
- * _rotl - rotates the stack to the top.
+ * rotl - rotates the stack to the top.
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _rotl(stack_t **stack, unsigned int line_number)
+void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *last = *stack;
 	int aux = 0;
@@ -63,11 +63,11 @@ void _rotl(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _rotr - rotates the stack to the bottom.
+ * rotr - rotates the stack to the bottom.
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _rotr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void rotr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *current = *stack;
 	stack_t *last;

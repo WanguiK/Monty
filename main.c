@@ -39,7 +39,6 @@ int main(int argc, char **argv)
  */
 void read_file(char *filename, stack_t **stack)
 {
-	char *line = NULL;
 	size_t len = 0;
 	int line_count = 0;
 	ssize_t nread;
@@ -56,16 +55,16 @@ void read_file(char *filename, stack_t **stack)
 
 	while ((nread = getline(&var_global.buffer, &len, var_global.file)) != -1)
 	{
-		if (line[0] == 0 || line[0] == '#')
+		if (var_global.buffer[0] == 0 || var_global.buffer[0] == '#')
 		{
 			line_count++;
 			continue;
 		}
-		func = get_op_func(line);
+		func = get_op_func(var_global.buffer);
 
 		if (func == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, line);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, var_global.buffer);
 			exit(EXIT_FAILURE);
 		}
 		func(stack, line_count);
@@ -87,21 +86,21 @@ instruct_func get_op_func(char *str)
 	char *opcode;
 
 	instruction_t instruct[] = {
-		{"push", _push},
-		{"pall", _pall},
-		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"add", _add},
-		{"nop", _nop},
-		{"sub", _sub},
-		{"mul", _mul},
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"sub", sub},
+		{"mul", mul},
 		{"div", _div},
-		{"mod", _mod},
-		{"pchar", _pchar},
-		{"pstr", _pstr},
-		{"rotl", _rotl},
-		{"rotr", _rotr},
+		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL},
 	};
 

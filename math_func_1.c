@@ -3,11 +3,11 @@
 #include "monty.h"
 
 /**
- * _add- adds the top two elements of the stack
+ * add- adds the top two elements of the stack
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _add(stack_t **stack, unsigned int line_number)
+void add(stack_t **stack, unsigned int line_number)
 {
 	int sum = 0;
 	stack_t *temp;
@@ -31,17 +31,17 @@ void _add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	sum = (*stack)->next->n + (*stack)->n;
-	_pop(stack, line_number);
+	pop(stack, line_number);
 
 	(*stack)->n = sum;
 }
 
 /**
- * _sub- doesn’t do anything
+ * sub- doesn’t do anything
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _sub(stack_t **stack, unsigned int line_number)
+void sub(stack_t **stack, unsigned int line_number)
 {
 	int sub = 0;
 
@@ -51,18 +51,18 @@ void _sub(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	sub = (*stack)->next->n - (*stack)->n;
-	_pop(stack, line_number);
+	pop(stack, line_number);
 
 	(*stack)->n = sub;
 }
 
 
 /**
- * _mul - mult the second top element of stack by the top element of stack
+ * mul - mult the second top element of stack by the top element of stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _mul(stack_t **stack, unsigned int line_number)
+void mul(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
@@ -79,12 +79,12 @@ void _mul(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _mod - computes the rest of the division of the second top element
+ * mod - computes the rest of the division of the second top element
  *        of the stack by the top element of the stack.
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _mod(stack_t **stack, unsigned int line_number)
+void mod(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
