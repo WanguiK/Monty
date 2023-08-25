@@ -20,7 +20,7 @@ void _add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	while (temp-> next != NULL)
+	while (temp->next != NULL)
 	{
 		temp = temp->next;
 	}
