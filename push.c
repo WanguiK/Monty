@@ -30,35 +30,3 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 	*stack = top;
 }
-/**
- * _parse_line - parses a line for an opcode and arguments
- * @line: the line to be parsed
- * @stack: pointer to the head of the stack
- * @line_number: the current line number
- * Return: returns the opcode or null on failure
- */
-char *_parse_line(char *line, stack_t **stack, unsigned int line_number)
-{
-	char *op_code, *push, *argv;
-	(void)stack;
-
-	push = "push";
-	op_code = strtok(line, "\n ");
-	if (op_code == NULL)
-		return (NULL);
-
-	if (strcmp(op_code, push) == 0)
-	{
-		argv = strtok(NULL, "\n ");
-		if (argv != NULL && is_number(argv) == 1)
-		{
-			var_global.push_argv = atoi(argv);
-		}
-		else
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-	}
-	return (op_code);
-}

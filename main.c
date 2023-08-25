@@ -56,7 +56,6 @@ void read_file(char *filename, stack_t **stack)
 
 	while ((nread = getline(&var_global.buffer, &len, var_global.file)) != -1)
 	{
-		line = _parse_line(var_global.buffer, stack, line_count);
 		if (line[0] == 0 || line[0] == '#')
 		{
 			line_count++;
@@ -140,4 +139,4 @@ int is_number(char *str)
 		i++;
 	}
 	return (1);
-
+}

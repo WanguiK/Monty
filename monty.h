@@ -51,8 +51,7 @@ void _pint(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
-void _nop(__attribute__ ((unused))stack_t **stack,
-		__attribute__ ((unused)) unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);
 void read_file(char *filename, stack_t **stack);
 void free_dlistint(stack_t *head);
@@ -66,7 +65,6 @@ void _pstr(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
 int is_number(char *str);
-char *_parse_line(char *line, stack_t **stack, unsigned int line_number);
 void dobfree(stack_t **stack);
 void dobfree2(stack_t **stack);
 
